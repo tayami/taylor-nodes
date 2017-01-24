@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taylor-Nodes Samples</title>
+    <link href="//cdn.bootcss.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="nodes/css/bootstrap-nodes.css" rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="nodes/js/bootstrap-nodes.js"></script>
+    <style>
+        #myNodes{margin-left: 25px;}
+        .bs-docs-header{background: #1d9756;color: #fff;padding: 30px 0;}
+        .nav-bar{padding: 15px 0;}
+        .nav-bar-title{font-size: 18px;font-weight: bold;color: #444;}
+        .docs-body{padding: 30px 0;}
+        .panel-menu{border: 1px solid #ddd;}
+        .panel-menu .panel-heading{background: #444;color: #fff;}
+        .nav-pills>li>a{border-radius: 0;color: #999;}
+        .code-pre-html{color: #423daa;}
+        .code-pre-func{color: #aa4689;}
+        .code-pre-g{color: #1d9756;}
+        .code-pre-var{color: #25bfcd;}
+        .code-pre-normal{color: #333;}
+        .code-pre-grey{color: #bbb;}
+        .code-pre-key{color: #D14;}
+        .code-pre-indent{width: 25px;display: inline-block;}
+        .code-pre{background: #fbfbfb;border-radius: 4px;border: 1px solid #ccc;margin-top: -5px;}
+        .code-pre ul{padding: 5px 0 0 0 ;margin: 0;}
+        .code-pre ul li{line-height: 30px;height: 30px;list-style: none;display: block;margin: 0;padding: 0;}
+        .code-pre ul li .line-num{margin-right: 5px;color: #aaa;width: 30px;line-height: 30px;text-align: center;height: 30px;background: #fdfdfd;border-right: 1px solid #ddd;display: inline-block;}
+
+
+        /******************** Bootstrap code examples
+-------------------------------------------------- ********************/
+
+        /* Base class */
+        .bs-docs-example {
+            position: relative;
+            margin: 0 0;
+            padding: 39px 19px 14px;
+            *padding-top: 19px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        /* Echo out a label for the example */
+        .bs-docs-example:after {
+            content: "Example";
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            padding: 3px 7px;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            color: #9da0a4;
+            -webkit-border-radius: 4px 0 4px 0;
+            -moz-border-radius: 4px 0 4px 0;
+            border-radius: 4px 0 4px 0;
+        }
+
+        /* Remove spacing between an example and it's code */
+        .bs-docs-example + .prettyprint {
+            margin-top: -20px;
+            padding-top: 15px;
+        }
+
+        /* Tweak examples
+        ------------------------- */
+        .bs-docs-example > p:last-child {
+            margin-bottom: 0;
+        }
+        .bs-docs-example .table,
+        .bs-docs-example .progress,
+        .bs-docs-example .well,
+        .bs-docs-example .alert,
+        .bs-docs-example .hero-unit,
+        .bs-docs-example .pagination,
+        .bs-docs-example .navbar,
+        .bs-docs-example > .nav,
+        .bs-docs-example blockquote {
+            margin-bottom: 5px;
+        }
+        .bs-docs-example .pagination {
+            margin-top: 0;
+        }
+        .bs-navbar-top-example,
+        .bs-navbar-bottom-example {
+            z-index: 1;
+            padding: 0;
+            height: 90px;
+            overflow: hidden; /* cut the drop shadows off */
+        }
+        .bs-navbar-top-example .navbar-fixed-top,
+        .bs-navbar-bottom-example .navbar-fixed-bottom {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .bs-navbar-top-example {
+            -webkit-border-radius: 0 0 4px 4px;
+            -moz-border-radius: 0 0 4px 4px;
+            border-radius: 0 0 4px 4px;
+        }
+        .bs-navbar-top-example:after {
+            top: auto;
+            bottom: -1px;
+            -webkit-border-radius: 0 4px 0 4px;
+            -moz-border-radius: 0 4px 0 4px;
+            border-radius: 0 4px 0 4px;
+        }
+        .bs-navbar-bottom-example {
+            -webkit-border-radius: 4px 4px 0 0;
+            -moz-border-radius: 4px 4px 0 0;
+            border-radius: 4px 4px 0 0;
+        }
+        .bs-navbar-bottom-example .navbar {
+            margin-bottom: 0;
+        }
+        form.bs-docs-example {
+            padding-bottom: 19px;
+        }
+
+        /* Images */
+        .bs-docs-example-images img {
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Tooltips */
+        .bs-docs-tooltip-examples {
+            text-align: center;
+            margin: 0 0 10px;
+            list-style: none;
+        }
+        .bs-docs-tooltip-examples li {
+            display: inline;
+            padding: 0 10px;
+        }
+
+        /* Popovers */
+        .bs-docs-example-popover {
+            padding-bottom: 24px;
+            background-color: #f9f9f9;
+        }
+        .bs-docs-example-popover .popover {
+            position: relative;
+            display: block;
+            float: left;
+            width: 260px;
+            margin: 20px;
+        }
+
+        /* Dropdowns */
+        .bs-docs-example-submenus {
+            min-height: 180px;
+        }
+        .bs-docs-example-submenus > .pull-left + .pull-left {
+            margin-left: 20px;
+        }
+        .bs-docs-example-submenus .dropup > .dropdown-menu,
+        .bs-docs-example-submenus .dropdown > .dropdown-menu {
+            display: block;
+            position: static;
+            margin-bottom: 5px;
+            *width: 180px;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-bar" id="top">
+        <div class="container">
+            <div class="nav-bar-header">
+                <span class="nav-bar-title">TaylorNodes</span>
+            </div>
+        </div>
+    </header>
+    <div class="bs-docs-header" id="header" tabindex="-1">
+        <div class="container">
+            <h1>jQuery+Bootstrap 树形表格插件</h1>
+            <p>此 jQuery 组件为使用 Bootstrap 的树形文档表格结构, 操作列可扩展, 方便的就能引入页面中。</p>
+        </div>
+    </div>
+    <div class="docs-body" id="main">
+        <div class="container">
+            <div class="col-md-3">
+                <div class="panel panel-menu">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">目录</h3>
+                    </div>
+                    <div class="panel-body" style="padding: 0;">
+                        <ul class="nav nav-pills nav-stacked nav-btns">
+                            <li class="active"><a href="#">基本示例</a></li>
+                            <li><a href="#">属性(待更新)</a></li>
+                            <li><a href="#">方法(待更新)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="bs-docs-example">
+                    <div class="panel-body">
+                        <h2>基本示例</h2>
+                        <p>使用Nodes方法生成如下树形表格文档。</p>
+                        <hr/>
+                        <div id="myNodes">
+                            <div class="node-base" data-nodes-width="250">地区</div>
+                            <div class="node-extra" data-nodes-width="250" data-nodes-field="desc">描述</div>
+                            <div class="node-extra" data-nodes-width="100" data-nodes-field="area">面积(km²)</div>
+                            <div class="node-extra" data-nodes-width="100" data-nodes-field="population">人口(万)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-pre">
+                    <ul>
+                        <li>
+                            <span class="line-num">1.</span>
+                            <span class="code-pre-grey">//html预定义结构</span>
+                        </li>
+                        <li>
+                            <span class="line-num">2.</span>
+                            <span class="code-pre-html">&lt;div <span class="code-pre-g">class="<span class="code-pre-key">myNodes</span>"</span>&gt;</span>
+                        </li>
+                        <li>
+                            <span class="line-num">3.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-html">&lt;div
+                                <span class="code-pre-g">class="<span class="code-pre-key">node-base</span>"</span>
+                                <span class="code-pre-g">data-nodes-width="<span class="code-pre-key">250</span>"</span>
+                                &gt;</span>地区<span><span class="code-pre-html">&lt;/div&gt;</span></span>
+                        </li>
+                        <li>
+                            <span class="line-num">4.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-html">&lt;div
+                                <span class="code-pre-g">class="<span class="code-pre-key">node-extra</span>"</span>
+                                <span class="code-pre-g">data-nodes-width="<span class="code-pre-key">250</span>"</span>
+                                 <span class="code-pre-g">data-nodes-field="<span class="code-pre-key">desc</span>"</span>
+                                &gt;</span>描述<span><span class="code-pre-html">&lt;/div&gt;</span></span>
+                        </li>
+                        <li>
+                            <span class="line-num">5.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-html">&lt;div
+                                <span class="code-pre-g">class="<span class="code-pre-key">node-extra</span>"</span>
+                                <span class="code-pre-g">data-nodes-width="<span class="code-pre-key">100</span>"</span>
+                                 <span class="code-pre-g">data-nodes-field="<span class="code-pre-key">area</span>"</span>
+                                &gt;</span>面积(km²)<span><span class="code-pre-html">&lt;/div&gt;</span></span>
+                        </li>
+                        <li>
+                            <span class="line-num">6.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-html">&lt;div
+                                <span class="code-pre-g">class="<span class="code-pre-key">node-extra</span>"</span>
+                                <span class="code-pre-g">data-nodes-width="<span class="code-pre-key">100</span>"</span>
+                                 <span class="code-pre-g">data-nodes-field="<span class="code-pre-key">population</span>"</span>
+                                &gt;</span>人口(万)<span><span class="code-pre-html">&lt;/div&gt;</span></span>
+                        </li>
+                        <li>
+                            <span class="line-num">7.</span>
+                            <span><span class="code-pre-html">&lt;/div&gt;</span></span>
+                        </li>
+                        <li>
+                            <span class="line-num">8.</span>
+                        </li>
+                        <li>
+                            <span class="line-num">9.</span>
+                            <span><span class="code-pre-html">&lt;script&gt;</span></span>
+                        </li>
+                        <li>
+                            <span class="line-num">10.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-key">var</span>
+                            <span class="code-pre-var">data</span>
+                            <span class="code-pre-normal">= [</span>
+                        </li>
+                        <li>
+                            <span class="line-num">11.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">{</span>
+                        </li>
+                        <li>
+                            <span class="line-num">12.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">id</span>
+                            <span class="code-pre-normal">: <span class="code-pre-g">1</span>,</span>
+                        </li>
+                        <li>
+                            <span class="line-num">13.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">name</span>
+                            <span class="code-pre-normal">: <span class="code-pre-g">澳大利亚</span>,</span>
+                        </li>
+                        <li>
+                            <span class="line-num">14.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">icon</span>
+                            <span class="code-pre-normal">: <span class="code-pre-g">folder</span>,</span>
+                        </li>
+                        <li>
+                            <span class="line-num">15.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">extra</span>
+                            <span class="code-pre-normal">: {<span class="code-pre-func">desc</span>: <span class="code-pre-g">"四面环海，是世界上唯一国土覆盖一整个大陆的国家"</span>, <span class="code-pre-func">area</span>: <span class="code-pre-g">"7,686,850"</span>, <span class="code-pre-func">population</span>: <span class="code-pre-g">"2380"</span>},</span>
+                        </li>
+                        <li>
+                            <span class="line-num">16.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">childes</span>
+                            <span class="code-pre-normal">: [</span>
+                        </li>
+
+                        <li>
+                            <span class="line-num">17.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">{</span>
+                        </li>
+                        <li>
+                            <span class="line-num">18.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">id</span>
+                            <span class="code-pre-normal">: <span class="code-pre-g">2</span>,</span>
+                        </li>
+                        <li>
+                            <span class="line-num">19.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">name</span>
+                            <span class="code-pre-normal">: <span class="code-pre-g">新南威尔士州</span>,</span>
+                        </li>
+                        <li>
+                            <span class="line-num">20.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">icon</span>
+                            <span class="code-pre-normal">: <span class="code-pre-g">user</span>,</span>
+                        </li>
+                        <li>
+                            <span class="line-num">21.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">extra</span>
+                            <span class="code-pre-normal">: {<span class="code-pre-func">desc</span>: <span class="code-pre-g">"首府悉尼"</span>, <span class="code-pre-func">area</span>: <span class="code-pre-g">"801,600"</span>, <span class="code-pre-func">population</span>: <span class="code-pre-g">"724"</span>},</span>
+                        </li>
+                        <li>
+                            <span class="line-num">22.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-func">childes</span>
+                            <span class="code-pre-normal">: [</span>
+                        </li>
+                        <li>
+                            <span class="line-num">23.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-grey">...</span>
+                        </li>
+                        <li>
+                            <span class="line-num">24.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">],</span>
+                        </li>
+                        <li>
+                            <span class="line-num">25.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">},</span>
+                        </li>
+                        <li>
+                            <span class="line-num">26.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-grey">...</span>
+                        </li>
+
+                        <li>
+                            <span class="line-num">27.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">],</span>
+                        </li>
+                        <li>
+                            <span class="line-num">28.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">},</span>
+                        </li>
+                        <li>
+                            <span class="line-num">29.</span>
+                            <span class="code-pre-indent"></span><span class="code-pre-indent"></span>
+                            <span class="code-pre-grey">...</span>
+                        </li>
+                        <li>
+                            <span class="line-num">30.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-normal">];</span>
+                        </li>
+                        <li>
+                            <span class="line-num">31.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-grey">//使用jquery方式生成</span>
+                        </li>
+                        <li>
+                            <span class="line-num">32.</span>
+                            <span class="code-pre-indent"></span>
+                            <span class="code-pre-func">$</span>
+                            <span class="code-pre-normal">(<span class="code-pre-g">"#myNodes"</span>)</span>
+                            <span class="code-pre-normal">.<span class="code-pre-func">Nodes</span>(<span class="code-pre-var">data</span>);</span>
+                        </li>
+                        <li>
+                            <span class="line-num">33.</span>
+                            <span><span class="code-pre-html">&lt;/script&gt;</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    $('.nav-btns li').click(function(){
+        $('.nav-btns li').removeClass('active');
+        $(this).addClass('active');
+    });
+    var data = [
+        {
+            id: 1,
+            name: '澳大利亚',
+            icon: 'folder-open',
+            extra: {desc: '四面环海，是世界上唯一国土覆盖一整个大陆的国家', area: '7,686,850', population: '2380'},
+            childes: [
+                {
+                    id: 2,
+                    name: '新南威尔士州',
+                    icon: 'user',
+                    extra: {desc: '首府悉尼', area: '801,600', population: '724'},
+                    childes: []
+                },
+                {
+                    id: 3,
+                    name: '昆士兰州',
+                    icon: 'user',
+                    extra: {desc: '首府布里斯班', area: '1,727,200', population: '451.4'},
+                    childes: []
+                },
+                {
+                    id: 4,
+                    name: '南澳大利亚州',
+                    icon: 'user',
+                    extra: {desc: '首府阿德莱德', area: '1,043,514', population: '165'},
+                    childes: []
+                },
+                {
+                    id: 5,
+                    name: '塔斯马尼亚',
+                    icon: 'user',
+                    extra: {desc: '首府霍巴特', area: '90,758', population: '50.3'},
+                    childes: []
+                },
+                {
+                    id: 6,
+                    name: '维多利亚州',
+                    icon: 'user',
+                    extra: {desc: '首府墨尔本', area: '237,629', population: '560'},
+                    childes: []
+                },
+                {
+                    id: 7,
+                    name: '西澳大利亚州',
+                    icon: 'user',
+                    extra: {desc: '首府珀斯', area: '2,525,500', population: '211.8'},
+                    childes: []
+                }
+            ]
+        },
+        {
+            id: 8,
+            name: '中国',
+            icon: 'folder-open',
+            extra: {desc: '中华人民共和国位于亚洲东部,太平洋西岸', area: '9,634,057', population: '1367820000'},
+            childes: [
+                {
+                    id: 9,
+                    name: '北京',
+                    icon: 'folder-open',
+                    extra: {desc: '中国首都', area: '16410', population: '2172.9'},
+                    childes: [
+                        {
+                            id: 10,
+                            name: '东城区',
+                            icon: 'flag',
+                            extra: {desc: '位于北京市城区东部', area: '41.84', population: '91.9'},
+                            childes: []
+                        }
+                    ]
+                },
+                {
+                    id: 11,
+                    name: '上海',
+                    icon: 'folder-open',
+                    extra: {desc: '中华人民共和国直辖市', area: '6340', population: '2415.27'},
+                    childes: [
+                        {
+                            id: 12,
+                            name: '黄浦区',
+                            icon: 'flag',
+                            extra: {desc: '黄浦江和苏州河合流处的西南端', area: '20.5', population: '90.9'},
+                            childes: []
+                        },
+                        {
+                            id: 13,
+                            name: '静安区',
+                            icon: 'folder-open',
+                            extra: {desc: '上海的市中心', area: '37.37', population: '100'},
+                            childes: [
+                                {
+                                    id: 14,
+                                    name: '景点',
+                                    icon: 'folder-open',
+                                    extra: {desc: '-', area: '-', population: '-'},
+                                    childes: [
+                                        {
+                                            id: 15,
+                                            name: '静安寺',
+                                            icon: 'file',
+                                            extra: {desc: '又称静安古寺', area: '-', population: '-'},
+                                            childes: []
+                                        },
+                                        {
+                                            id: 16,
+                                            name: '玉佛寺',
+                                            icon: 'file',
+                                            extra: {desc: '因寺内主要供奉玉佛而得名', area: '-', population: '-'},
+                                            childes: []
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    $('#myNodes').Nodes(data);
+</script>
+</html>
