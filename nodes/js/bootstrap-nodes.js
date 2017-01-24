@@ -111,8 +111,10 @@
                         node.addClass('node-has-child');
                         node.append(doms.plusBtn);
                         node.append(doms.minusBtn);
+                        node.append($(doms.icon).addClass('fa-folder-open'));
+                    } else {
+                        node.append($(doms.icon).addClass('fa-'+icon));
                     }
-                    node.append($(doms.icon).addClass('fa-'+icon));
                     node.append($(doms.nodeName).html(name));
                 } else {
                     node.html(extras[c_v.field]);
